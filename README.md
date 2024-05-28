@@ -9,6 +9,8 @@ This repository contains a Python script designed to automate edge searches. Edg
 - Includes a batch script (`start.bat`) in the `batchscript` folder to automate the task of running the script on multiple VMs.
 
 ## Usage
+![automation search](./img_for_docs/step1.gif)
+
 1. Clone or download this repository to your local machine.
 2. Copy the `vmproject` folder inside the VM where you want to run the script.
 3. Open the `batchscript` folder and locate the `start.bat` file.
