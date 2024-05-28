@@ -8,7 +8,7 @@ This repository contains a Python script designed to automate edge searches. Edg
 - Automates edge searches to earn points.
 - Can be run on multiple virtual machines (VMs) simultaneously.
 - Includes a batch script (`start.bat`) in the `batchscript` folder to automate the task of running the script on multiple VMs.
-- 
+  
 ![start batch file](./img_for_docs/step1.gif)
 
 ## Usage
