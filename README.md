@@ -10,7 +10,7 @@ This repository contains a Python script designed to automate edge searches. Edg
 
 ## Usage
 1. Clone or download this repository to your local machine.
-2. Copy the VM project folder inside the VM where you want to run the script.
+2. Copy the `vmproject` folder inside the VM where you want to run the script.
 3. Open the `batchscript` folder and locate the `start.bat` file.
 4. Double-click the `start.bat` file to execute it.
 5. Sit back and relax as the script automates the edge searches on your VM.
@@ -18,6 +18,7 @@ This repository contains a Python script designed to automate edge searches. Edg
 ## Requirements
 - Python 3.x installed on your system.
 - Access to virtual machines with Edge installed.
+- use oracle vm virtualbox
 
 ## Contributing
 Contributions are welcome! If you encounter any issues or have suggestions for improvements, please feel free to open an issue or submit a pull request.
