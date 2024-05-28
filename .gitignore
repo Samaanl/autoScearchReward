@@ -1,0 +1,5 @@
+microsoftautomationseaerch/*
+!microsoftautomationseaerch/vmproject/
+!microsoftautomationseaerch/batchscript/
+
+microsoftautomationseaerch/vmproject/__pycache__/
