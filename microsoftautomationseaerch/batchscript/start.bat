@@ -1,26 +1,23 @@
 @echo off
 setlocal EnableDelayedExpansion
 set vmnum=1
-set vmstopnum=1
 set vmname=sam
-set PASSWORD=2004
+::how many vm want to run at a time you have mention the number here
+set vminsatance=4
+::upper bound of vm to stop
+set vmstopub=!vminsatance!
+::lowwer bound of vm to start
+set vmstoplb=1
+
 
 FOR /L %%A IN (1,1,2) DO (
-    FOR /L %%A IN (1,1,4) DO (
-        @REM echo starting vm !vmname!!vmnum!
+    FOR /L %%B IN (1,1,!vminsatance!) DO (
         VBoxManage startvm "!vmname!!vmnum!"
         C:\Windows\System32\timeout.exe /t 10
-        @REM running the good.sh script
 
-@REM echo pressed pass
-@REM VBoxManage controlvm "!vmname!!vmnum!" keyboardputstring "%PASSWORD%"
-@REM C:\Windows\System32\timeout.exe /t 5
-@REM echo pressed enter 
-@REM VBoxManage controlvm "!vmname!!vmnum!" keyboardputscancode 1c
-@REM VBoxManage controlvm "!vmname!!vmnum!" keyboardputscancode 9c
+
 
 :: Run the good.sh script inside the VM
-        @REM C:\Windows\System32\timeout.exe /t 10
         echo Running good.sh script...
         ::1D 38 14 are press singnal for ctrl + alt + T
         VBoxManage controlvm "!vmname!!vmnum!" keyboardputscancode 1D 38 14
@@ -49,15 +46,16 @@ FOR /L %%A IN (1,1,2) DO (
     
 
 
+:: the VMs will run for 1900 seconds
+C:\Windows\System32\timeout.exe /t 1900
 
- C:\Windows\System32\timeout.exe /t 1900
-    @REM closing the vm
-    @REM echo stopping vm !vmname!!vmstopnum!
-    VBoxManage controlvm "!vmname!!vmstopnum!" savestate
-    set /a vmstopnum+=1
-    @REM echo stopping vm !vmname!!vmstopnum!
-    VBoxManage controlvm "!vmname!!vmstopnum!" savestate
-    set /a vmstopnum+=1
+    :: closing the vm
+    FOR /L %%C IN (!vmstoplb!,1,!vmstopub!) DO (
+        echo closing vm !vmname!%%C
+        VBoxManage controlvm "!vmname!%%C" savestate
 
+    )
+    set /a vmstoplb+=!vmstopub!
+    set /a vmstopub+=!vminsatance!
 
 )
